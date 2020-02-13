@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="school.name" />
+      <div>{{school.name}}---{{school.name}}</div>
+      <div>{{school.age}}</div>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+      </ul>
+      <!-- 有缓存 -->
+      {{getNewName}}
+      <!-- v-on事件 -->
+      <button v-on:click="changes">{{school.name}}</button>
+      <div v-html="message"></div>
+    </div>
+    <script src="MVVM.js"></script>
+    <!-- <script src="../vue/Vue.js"></script> -->
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          school: {
+            name: 'mzy',
+            age: 20
+          },
+          message: '<h1>123</h1>'
+        },
+        computed: {
+          getNewName() {
+            return this.school.name + ' computed';
+          }
+        },
+        methods: {
+          changes() {
+            this.school.name = 'change';
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
